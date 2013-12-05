@@ -4,22 +4,24 @@ A collection of tools to be used with Vissim
 
 All tools released under GPLv2
  
-api.pl - Axle passage interpreter
-apiformat.pl - Axle passage formatter
-expexcel.pl - Export data to MS Excel and display a chart
-resformat.pl - Printers number of vehicle passing each second
-restid.pl - Prints statistics from SAVA output (video analysis)
-visperl.pl - Start/load/modify/run/save vissim simulations and save results
-ttstat.pl - Travel time statistics
-spool.pl - Simple queue system to run a batch of vissim simulations
-ec1run.pl - Run EC1 traffic simulator with given settings
+- api.pl - Axle passage interpreter
+- apiformat.pl - Axle passage formatter
+- expexcel.pl - Export data to MS Excel and display a chart
+- resformat.pl - Printers number of vehicle passing each second
+- restid.pl - Prints statistics from SAVA output (video analysis)
+- visperl.pl - Start/load/modify/run/save vissim simulations and save results
+- ttstat.pl - Travel time statistics
+- spool.pl - Simple queue system to run a batch of vissim simulations
+- ec1run.pl - Run EC1 traffic simulator with given settings
 
 api.pl
 ------
 NAME
+
        api - axle passage interpreter
 
 SYNOPSIS
+
        api.pl [--start=HH:MM] [--end=HH:MM] [--tubedistance=meters]
        [--maxspeed=km/h] [--minspeed=km/h] [--minaxllen=meters]
        [--maxaxllen=meters] [--maxspeedvariation=percent]
@@ -27,10 +29,12 @@ SYNOPSIS
        [filename..]
 
 DESCRIPTION
+
        api.pl is a axle passage interpreter program designed to be used to
        analyse traffic data from pneumatic tubes and convert to axle passages.
 
 OPTIONS
+
        --start=HH:MM
            Optional. Start time for result interpretation.
 
@@ -88,7 +92,9 @@ OPTIONS
            line starts with the text '[debug]'.
 
 CAVEATS
+
    Noticed problems
+
        o       Heavy vehicles sometimes causes bounces. We're using bounce
                reject set to 40 milliseconds by default
 
@@ -100,6 +106,7 @@ CAVEATS
        all pulses to axles in such situations.
 
    Limitations
+
        o   No more that 2 axles
 
            This program doesn't support vehicles with more that two axles.
@@ -124,12 +131,15 @@ CAVEATS
 apiformat.pl
 ------------
 NAME
+
        apiformat - axle passage formatter
 
 SYNOPSIS
+
        apiformat.pl [--interval=minutes]
 
 DESCRIPTION
+
        apiformat.pl formats the output from api.pl into vehicles by given time
        period.
 
@@ -140,6 +150,7 @@ DESCRIPTION
        period].
 
 OPTIONS
+
        --interval=minutes
            Reporting interval
 
@@ -147,12 +158,15 @@ OPTIONS
 expexcel.pl
 -----------
 NAME
+
        expexcel - export data to MS Excel and display a chart
 
 SYNOPSIS
+
        expexcel.pl [filename ...]
 
 DESCRIPTION
+
        expexcel.pl tries to start MS Excel using OLE/COM, print data and
        display a chart using data from standard input or given input files.
        The columns in the input data must be separated using semicolons.
@@ -162,13 +176,16 @@ DESCRIPTION
 resformat.pl
 ------------
 NAME
+
        resformat - prints number of vehicles passing during each second
 
 SYNOPSIS
+
        resformat.pl [--vissim] [--nr=number or route] [--vissim-file=filename]
        [filename ...]
 
 DESCRIPTION
+
        resformat.pl accepts these types of input
 
        o   restid.pl using --verbose-export and --nostats in restid.pl
@@ -214,6 +231,7 @@ DESCRIPTION
        Typically the graph will look like some sort of waveform.
 
 OPTIONS
+
        resformat.pl accepts the following options:
 
        --vissim
@@ -233,15 +251,18 @@ OPTIONS
 restid.pl
 ---------
 NAME
+
        restid - prints statistics from SAVA output
 
 SYNOPSIS
+
        restid.pl [--startline=startline1[,startline2..]]
        [--waitline=waitline] [--endline=endline1[,endline2..]] [--verbose]
        [--verbose-export] [--nostats] [--vissim] [--convert]
        [--convert-file=filename] [filename]...
 
 DESCRIPTION
+
        restid.pl reads the output from SAVA program and prints
        statistics about travel time.
 
@@ -259,6 +280,7 @@ DESCRIPTION
        * Calculate average delay
 
 OPTIONS
+
        restid.pl accepts the following options:
 
        --startline=startline
@@ -312,6 +334,7 @@ OPTIONS
                This option only works in combination with the --vissim option.
 
 CAVEATS
+
        --waitline only accepts one number.
 
 
@@ -326,9 +349,11 @@ Typical usage:
 - Close Vissim
 
 NAME
+
        visperl - run Vissim simulation and save the results
 
 SYNOPSIS
+
        visperl.pl [--path=path] [--net=filename] [--rsz=filename]
        [--rsr=filename] [--period=seconds] [--iterations=no of iterations]
        [--increase_all_volume=percent]
@@ -346,12 +371,14 @@ SYNOPSIS
        [--config=filename]
 
 DESCRIPTION
+
        visperl.pl runs a Vissim simulation using the given project file. It
        can modify certain properties in Vissim (e.g. traffic volume,
        simulation period) and rename log file of travel times to a custom name
        when done.
 
 OPTIONS
+
        --path=path
                Optional. This is the path to the Vissim project directory. Can
                be used to find the Vissim project file (not required) and to
@@ -490,6 +517,7 @@ OPTIONS
                lines and lines beginning with a '#'-char are ignored.
 
 CAVEATS
+
        Remaining issues
 
        Start of the EC1-simulator might fail
@@ -510,12 +538,15 @@ CAVEATS
 ttstat.pl
 ---------
 NAME
+
        ttstat - travel time statistics
 
 SYNOPSIS
+
        ttstat.pl --vissim --convert --convert-file
 
 DESCRIPTION
+
        ttstat.pl prints various forms of statistics from travel times.
 
        travel times is read on the form
@@ -523,6 +554,7 @@ DESCRIPTION
        [completion time];[route];[veh id];[vehicle type];[travel time]
 
 OPTIONS
+
        --vissim
 
        Output traffic volume and routing relative flow in a format compatible
